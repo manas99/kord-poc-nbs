@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md my-3">
+      <h3 class="raleway-bold">Upload File</h3>
+      <div class="w-100 d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center my-1">
+          <input type="file" class="form-control rounded-0" (change)="fileChanged($event)">
+        </div>
+        <div class="d-flex align-items-center my-1">
+          <div class="input-group me-1">
+            <input type="text" class="form-control rounded-0" placeholder="Filename it will be publicly available" aria-label="Filename" aria-describedby="file-ext" [disabled]="!selected_file" [(ngModel)]="selected_filename">
+            <span class="input-group-text rounded-0" id="file-ext">{{selected_ext}}</span>
+          </div>
+          <button class="btn btn-dark rounded-0 ms-1" (click)="uploadFile()" [disabled]="!selected_file && !selected_filename">Upload</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4 my-3">
+      <h3 class="raleway-bold">Request Access</h3>
+      <span class="text-muted">Share the following details with the sender</span>
+      <div class="my-1">
+        <small class="me-2">Account Name:</small><br /><span class="">{{my_account_name}}</span>
+      </div>
+      <div class="my-1">
+        <small class="me-2">Public key:</small><br /> <span class="">{{my_public_key}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md my-3">
+      <h3 class="raleway-bold">My Files</h3>
+      <div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="my_files.length > 0">
+        <div class="col" *ngFor="let file of my_files">
+          <div class="card rounded-0">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body">
+              <h6 class="card-title">{{file.name}}</h6>
+              <p class="card-text">IPFS Link: <a [href]="'https://ipfs.io/ipfs/'+file.cid">Click here</a></p>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-outline-danger rounded-0 border-0" data-bs-toggle="modal" data-bs-target="#shareModal" (click)="shareModalShow(file)">Share</button>
+                <button class="btn btn-outline-success rounded-0 border-0" (click)="accessorsModalShow(file)">View</button>
+                <button class="btn btn-light rounded-0" (click)="downloadFile(file)"><i class="fas fa-cloud-download-alt"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row m-4 text-center" *ngIf="my_files.length == 0">
+        <h5 class="text-muted">No files uploaded.</h5>
+      </div>
+    </div>
+    <div class="col-md-4 my-3">
+      <h3 class="raleway-bold">Accessible Files</h3>
+      <div class="row row-cols-1 row-cols-md-1 g-4" *ngIf="my_access_files.length > 0">
+        <div class="col" *ngFor="let file of my_access_files">
+          <div class="card rounded-0">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body d-flex align-items-center justify-content-between">
+              <div class="">
+                <h6 class="card-title">{{file.name}}</h6>
+                <p class="card-text">Owner: {{file.owner}}</p>
+              </div>
+              <button class="btn btn-light rounded-0" (click)="downloadFile(file)"><i class="fas fa-cloud-download-alt"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row m-4 text-center" *ngIf="my_access_files.length == 0">
+        <h5 class="text-muted">No files with access.</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="shareModal" aria-labelledby="shareModalLabel" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-0">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title" id="shareModalLabel">Share Access</h5>
+        <button type="button" class="btn-close rounded-0" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control rounded-0 my-1" placeholder="Account Name" [(ngModel)]="share_account_name">
+        <input type="text" class="form-control rounded-0 my-1" placeholder="Public Key" [(ngModel)]="share_public_key">
+      </div>
+      <div class="modal-footer rounded-0">
+        <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-danger rounded-0 border-0" (click)="shareConfirm()">Share</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="accessorsModal" aria-labelledby="accessorsModalLabel" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content rounded-0">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title" id="accessorsModalLabel">Shared With</h5>
+        <button type="button" class="btn-close rounded-0" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card rounded-0 my-1" *ngFor="let user of accessors">
+          <div class="card-body py-1 px-2 d-flex align-items-center justify-content-between">
+            <p class="card-text">{{user}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer rounded-0">
+        <button type="button" class="btn btn-outline-secondary rounded-0 border-0" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

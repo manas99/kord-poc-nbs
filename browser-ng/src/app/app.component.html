@@ -1,0 +1,6 @@
+<nav class="navbar bg-white fixed-top p-2 w-100 d-flex align-items-center justify-content-between">
+  <h2 class="raleway-black mb-0">SOME COOL TITLE</h2>
+  <span *ngIf="near_.isSignedIn()" class="text-muted">Logged In as: {{near_.getAccountName()}}</span>
+</nav>
+<div class="buffer"></div>
+<router-outlet></router-outlet>

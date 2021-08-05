@@ -1,0 +1,29 @@
+{
+  "name": "doc-block",
+  "version": "1.0.0",
+  "description": "Secure P2P document sharing on the blockchain",
+  "main": "client/index.html",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node ./src/same_keypair_enc.js",
+    "dev": "parcel client/index.html",
+    "server": "http-server ./dist",
+    "webpack": "webpack --mode development",
+    "build": "run-p webpack server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ipfs": "^0.55.4",
+    "libsodium": "^0.7.9",
+    "libsodium-wrappers": "^0.7.9",
+    "near-api-js": "^0.42.0",
+    "tweetnacl": "^0.14.5",
+    "tweetnacl-util": "^0.15.1"
+  },
+  "devDependencies": {
+
+  }
+}

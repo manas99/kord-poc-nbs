@@ -1,0 +1,53 @@
+{
+  "name": "browser-ng",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~12.1.2",
+    "@angular/common": "~12.1.2",
+    "@angular/compiler": "~12.1.2",
+    "@angular/core": "~12.1.2",
+    "@angular/forms": "~12.1.2",
+    "@angular/platform-browser": "~12.1.2",
+    "@angular/platform-browser-dynamic": "~12.1.2",
+    "@angular/router": "~12.1.2",
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "bootstrap": "^5.0.2",
+    "crypto-browserify": "^3.12.0",
+    "ipfs-core": "^0.8.0",
+    "jquery": "^3.6.0",
+    "libsodium": "^0.7.9",
+    "libsodium-wrappers": "^0.7.9",
+    "near-api-js": "^0.42.0",
+    "path-browserify": "^1.0.1",
+    "popper.js": "^1.16.1",
+    "process": "^0.11.10",
+    "rxjs": "~6.6.0",
+    "spinkit": "^2.0.1",
+    "stream-browserify": "^3.0.0",
+    "tslib": "^2.2.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "^12.1.0",
+    "@angular-devkit/build-angular": "~12.1.2",
+    "@angular/cli": "~12.1.2",
+    "@angular/compiler-cli": "~12.1.2",
+    "@types/jasmine": "~3.8.0",
+    "@types/node": "^12.20.16",
+    "jasmine-core": "~3.8.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "typescript": "~4.3.2"
+  }
+}
