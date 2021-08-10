@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	contract_address: "dev-1627418879688-76294946434441"
+	contract_address: "dev-1628346789901-91532178086165"
 };
 
 /*

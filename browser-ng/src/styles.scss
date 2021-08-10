@@ -14,6 +14,14 @@
   font-family: "Raleway Bold";
   src: url(assets/fonts/Raleway-Bold.ttf) format("truetype");
 }
+@font-face {
+  font-family: "League Spartan";
+  src: url(assets/fonts/LeagueSpartan-VF.ttf) format("truetype");
+}
+@font-face {
+  font-family: "League Spartan Bold";
+  src: url(assets/fonts/LeagueSpartan-Bold.ttf) format("truetype");
+}
 
 .raleway-black{
     font-family: "Raleway Black";
@@ -23,6 +31,9 @@
 }
 .raleway-bold{
     font-family: "Raleway Bold";
+}
+.league-spartan-bold{
+    font-family: "League Spartan Bold";
 }
 
 
